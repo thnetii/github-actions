@@ -1,5 +1,5 @@
 /* eslint-disable node/no-unpublished-require */
-const path = require("path");
+const path = require("node:path");
 const { exec } = require("@actions/exec");
 
 const formatterPath = path.join(__dirname, "formatter.js");
