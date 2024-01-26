@@ -1,0 +1,41 @@
+{
+  "name": "@thnetii/gh-actions-prettier",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thnetii/github-actions.git",
+    "directory": "run/gh-actions-prettier"
+  },
+  "keywords": [
+    "ghactions",
+    "gh-actions",
+    "github-actions",
+    "prettier"
+  ],
+  "author": {
+    "name": "TH-NETII Rasch Solutions",
+    "email": "fredrik.rasch@gmail.com",
+    "url": "https://thnetii.td.org.uit.no"
+  },
+  "maintainers": [
+    "Fredrik Høisæther Rasch <fredrik.rasch@gmail.com>"
+  ],
+  "bugs": {
+    "url": "https://github.com/thnetii/github-actions/issues"
+  },
+  "homepage": "https://github.com/thnetii/github-actions#readme",
+  "license": "MIT",
+  "files": [
+    "action.yml",
+    "setup.js"
+  ],
+  "main": "action.js",
+  "dependencies": {
+    "@actions/core": "^1.10.1",
+    "@actions/exec": "^1.1.1",
+    "setup-node": "github:actions/setup-node#v4.0.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
