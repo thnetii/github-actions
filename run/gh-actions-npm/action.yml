@@ -10,6 +10,16 @@ inputs:
     description: ""
     required: false
 runs:
-  using: node20
-  pre: setup.js
-  main: action.js
+  using: composite
+  steps:
+    - id: execute-script
+      uses: actions/github-script@v7.0.1
+      with:
+        script: |
+          require(process.env['GITHUB_ACTION_PATH'])(
+            { core, exec },
+            JSON.parse(process.env['ACTION_INPUTS_JSON']),
+          );
+      env:
+        ACTION_INPUTS_JSON: ${{ toJson(inputs) }}
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
