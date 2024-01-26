@@ -1,0 +1,61 @@
+name: "@thnetii/gh-actions-ms-idp-workflow-run-auth"
+author: thnetii
+description: >
+  Acquires an Access Token for Azure AD, authenticating as a workload Identity
+  (aka. Service Principal) using federated credentials issued by GitHub Action.
+  See https://learn.microsoft.com/en-us/azure/active-directory/workload-identities/workload-identity-federation-create-trust?pivots=identity-wif-apps-methods-azp#github-actions
+inputs:
+  tenant-id:
+    description: |
+      Azure AD Tenant Id (aka. Directory ID)
+      or
+      One of the registered friendly domain names of the tenant
+    required: true
+  client-id:
+    description: >
+      Client ID (aka. Application ID) of the application to authenticate.
+    required: true
+  instance:
+    description: >
+      The Microsoft Identity platform instance to use for authentication.
+      Default: The public Azure AD authentication endpoint.
+    default: "https://login.microsoftonline.com"
+  id-token-audience:
+    description: |
+      This value is used to establish a connection between your GitHub Actions
+      workflow and Azure Active Directory.
+      It specifies the audience for the token issued by the Github Actions token
+      authority.
+    default: "api://AzureADTokenExchange"
+  resource:
+    description: |
+      The requested audience of the access token after authentication completes.
+      This should be the resource identifier or Application ID URI of the
+      resource to which access is granted.
+      Example: For Microsoft Graph the value is: https://graph.microsoft.com
+      If omitted or empty, the audience will be set to the client id.
+  auth-method:
+    default: ms-idp-federated-credential
+    description: |
+      Valid values:
+      - ms-idp-federated-credential
+      - ms-idp-temporary-certificate
+      - ms-idp-temporary-secret
+      - az-acs-temporary-secret
+outputs:
+  access-token:
+    description: >
+      The requested access token. The app can use this token to authenticate to
+      the secured resource, such as to a web API.
+  result:
+    description: |
+      A JSON serialized object representing the details of the authentication.
+      It contains a property 'accessToken' which is equal to the 'access-token'
+      output value.
+      The object is an instance of the `AuthenticationResult` described by the
+      `@azure/msal-common` npm package.
+runs:
+  using: node20
+  pre: setup.js
+  main: action.js
+  post: cleanup.js
