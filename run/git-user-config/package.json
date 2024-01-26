@@ -1,6 +1,6 @@
 {
   "name": "@thnetii/gh-actions-git-user-config",
-  "version": "0.0.0",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thnetii/github-actions.git",
@@ -34,8 +34,7 @@
   "main": "action.js",
   "dependencies": {
     "@actions/core": "^1.10.1",
-    "@actions/exec": "^1.1.1",
-    "@thnetii/gh-actions-core-helpers": "^1.0.0"
+    "@actions/exec": "^1.1.1"
   },
   "engines": {
     "node": ">=20"

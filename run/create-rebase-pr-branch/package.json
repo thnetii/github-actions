@@ -1,6 +1,6 @@
 {
   "name": "@thnetii/gh-actions-create-rebase-pr-branch",
-  "version": "0.0.0",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thnetii/github-actions.git",

@@ -1,6 +1,6 @@
 {
   "name": "@thnetii/gh-actions-core-helpers",
-  "version": "1.0.0",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thnetii/github-actions.git",

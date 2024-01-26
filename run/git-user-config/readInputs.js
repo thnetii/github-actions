@@ -1,4 +1,7 @@
-const { bindCoreHelpers } = require("@thnetii/gh-actions-core-helpers");
+/* eslint-disable node/no-unpublished-require */
+const {
+  bindCoreHelpers,
+} = require("../../lib/gh-actions-core-helpers/index.cjs");
 
 const core = bindCoreHelpers(require("@actions/core"));
 

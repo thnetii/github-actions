@@ -14,7 +14,16 @@ inputs:
 outputs:
   command-exitcode:
     description: ""
+    value: ${{ steps.exec-command.outputs.command-exitcode }}
 runs:
-  using: node20
-  pre: setup.js
-  main: action.js
+  using: composite
+  steps:
+    - id: exec-command
+      uses: actions/github-script@v7.0.1
+      with:
+        script: |
+          require(process.env['GITHUB_ACTION_PATH'])(
+            { core, exec }
+          );
+      env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}

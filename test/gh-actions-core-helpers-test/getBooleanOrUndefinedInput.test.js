@@ -1,9 +1,10 @@
 const process = require("node:process");
 
+/* eslint-disable node/no-unpublished-require */
 const {
   bindCoreHelpers,
   getBooleanOrUndefinedInput,
-} = require("@thnetii/gh-actions-core-helpers");
+} = require("../../lib/gh-actions-core-helpers/index.cjs");
 
 const { getInputEnvKey, getMockCore } = require("./helpers/coreHelpers.cjs");
 

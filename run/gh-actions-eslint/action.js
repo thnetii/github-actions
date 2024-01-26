@@ -1,9 +1,12 @@
+/* eslint-disable node/no-unpublished-require */
 const path = require("path");
 const { exec } = require("@actions/exec");
 
 const formatterPath = path.join(__dirname, "formatter.js");
 
-const { bindCoreHelpers } = require("@thnetii/gh-actions-core-helpers");
+const {
+  bindCoreHelpers,
+} = require("../../lib/gh-actions-core-helpers/index.cjs");
 
 const core = bindCoreHelpers(require("@actions/core"));
 
