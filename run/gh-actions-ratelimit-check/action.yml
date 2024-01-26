@@ -1,0 +1,36 @@
+name: "@thnetii/gh-actions-ratelimit-check"
+author: thnetii
+description: |
+  GitHub actions that checks the remaining rate-limit for the core GitHub API.
+inputs: {}
+runs:
+  using: composite
+  steps:
+    - id: ratelimit-check
+      uses: actions/github-script@v6.4.1
+      with:
+        script: |
+          require(process.env['GITHUB_ACTION_PATH'])(
+            {
+              github, core,
+            }
+          );
+      env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
+outputs:
+  remaining:
+    description: |
+      The number of requests remaining in the current rate limit window.
+    value: ${{ steps.ratelimit-check.outputs.remaining }}
+  reset:
+    description: |
+      The time at which the current rate limit window resets as an ISO 8601 date-time string
+    value: ${{ steps.ratelimit-check.outputs.reset }}
+  limit:
+    description: |
+      The maximum number of requests you're permitted to make per hour.
+    value: ${{ steps.ratelimit-check.outputs.limit }}
+  used:
+    description: |
+      The number of requests you've made in the current rate limit window.
+    value: ${{ steps.ratelimit-check.outputs.used }}
