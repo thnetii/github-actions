@@ -1,23 +1,24 @@
-/* eslint-disable node/no-unpublished-require */
-const {
-  bindCoreHelpers,
-} = require("../../lib/gh-actions-core-helpers/index.cjs");
-
 /**
  * @param {Pick<import("github-script").AsyncFunctionArguments, "core" | "exec">} args
+ * @param {{
+ *  command: string;
+ *  arguments: string | undefined,
+ *  "working-directory": string | undefined;
+ * }} inputs
  */
-async function execute({ core, exec }) {
-  const ghaCore = bindCoreHelpers(core);
-
-  const toolCmd = ghaCore.getInputEx("command", { required: true });
-  const toolArgs = ghaCore.getMultilineInputEx("arguments");
-  const toolCwd = ghaCore.getInputEx("working-directory");
+async function execute({ core, exec }, inputs) {
+  const toolCmd = inputs.command;
+  const toolArgs = (inputs.arguments || "")
+    .split("\n")
+    .map((a) => a.trim())
+    .filter((a) => !!a);
+  const toolCwd = inputs["working-directory"];
 
   const exitCode = await exec.exec(toolCmd, toolArgs, {
     cwd: toolCwd,
     ignoreReturnCode: true,
   });
-  ghaCore.setOutput("command-exitcode", exitCode);
+  core.setOutput("command-exitcode", exitCode);
   process.exitCode = exitCode;
 }
 

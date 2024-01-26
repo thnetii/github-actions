@@ -23,7 +23,9 @@ runs:
       with:
         script: |
           require(process.env['GITHUB_ACTION_PATH'])(
-            { core, exec }
+            { core, exec },
+            JSON.parse(process.env['ACTION_INPUTS_JSON']),
           );
       env:
+        ACTION_INPUTS_JSON: ${{ toJson(inputs) }}
         GITHUB_ACTION_PATH: ${{ github.action_path }}
