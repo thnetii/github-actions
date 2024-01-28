@@ -4,14 +4,16 @@ const httpClientModule = require("@actions/http-client");
 
 const msalNodeModule = import("@azure/msal-node");
 
-const { bindCoreHelpers } = require("../../lib/gh-actions-core-helpers");
+const {
+  bindCoreHelpers,
+} = require("../../lib/gh-actions-core-helpers/index.cjs");
 const buildGhaHttpClient = require("../../lib/gh-actions-http-client");
 
 const { saveStateEx: saveState } = bindCoreHelpers(ghaCore);
 const { HttpClientError } = httpClientModule;
 const { GhaHttpClient } = buildGhaHttpClient(ghaCore, httpClientModule);
 
-const utils = require("./utils.js");
+const utils = require("./utils");
 const GhaMsalAccessTokenProviderModule = require("./GhaMsalAccessTokenProvider");
 const GhaServicePrincipalUpdater = require("./GhaServicePrincipalUpdater");
 
