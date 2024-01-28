@@ -5,6 +5,7 @@ const {
   bindCoreHelpers,
 } = require("../../lib/gh-actions-core-helpers/index.cjs");
 
+// eslint-disable-next-line node/no-unsupported-features/es-syntax, node/no-missing-import
 const msalNode = import("@azure/msal-node");
 
 const {
