@@ -209,6 +209,9 @@ async function acquireAccessToken(httpClient) {
       return acquireAccessTokenMsal(msalApp, resource, maxAttempts);
     }
     if (authMethod === "az-acs-temporary-secret") {
+      ghaCore.warning(
+        "Azure Access Control Service authentication is depcreated.",
+      );
       ghaCore.debug(
         "Creating Azure Access Control Service client using the temporary password credential for client authentication",
       );

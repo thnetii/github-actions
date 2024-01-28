@@ -38,7 +38,7 @@ jobs:
           tenant-id: ${{ inputs.tenant-id }}
           client-id: ${{ inputs.client-id }}
           resource: ${{ inputs.resource }}
-          auth-method: 'ms-idp-temporary-certificate'
+          auth-method: "ms-idp-temporary-certificate"
   msal-tmp-secret:
     name: Acquire Azure AD Access Token (using temporary secret)
     runs-on: ubuntu-latest
@@ -49,10 +49,12 @@ jobs:
           tenant-id: ${{ inputs.tenant-id }}
           client-id: ${{ inputs.client-id }}
           resource: ${{ inputs.resource }}
-          auth-method: 'ms-idp-temporary-secret'
+          auth-method: "ms-idp-temporary-secret"
   acs-tmp-secret:
     name: Acquire Azure AD Access Token (using ACS with temporary secret)
     runs-on: ubuntu-latest
+    # deprecate ACS authentication method, as Microsoft is deprecating ACS
+    if: false
     steps:
       - name: Authenticate using GitHub action
         uses: thnetii/github-actions/run/ms-idp-workflow-run-auth@main
@@ -60,4 +62,4 @@ jobs:
           tenant-id: ${{ inputs.tenant-id }}
           client-id: ${{ inputs.client-id }}
           resource: ${{ inputs.resource }}/${{ inputs.resource-hostname }}
-          auth-method: 'az-acs-temporary-secret'
+          auth-method: "az-acs-temporary-secret"
