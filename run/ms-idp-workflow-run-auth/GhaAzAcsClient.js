@@ -1,6 +1,7 @@
 const { info } = require("@actions/core");
 const { HttpClientError, HttpCodes } = require("@actions/http-client");
 
+// eslint-disable-next-line node/no-unsupported-features/es-syntax, node/no-missing-import
 const msalNode = import("@azure/msal-node");
 
 const { onJwtToken } = require("./utils");

@@ -39,9 +39,6 @@
     "@azure/msal-node": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.2",
-    "@babel/eslint-parser": "^7.2.0",
-    "@babel/preset-env": "^7.23.2",
     "@microsoft/microsoft-graph-types": "^2"
   }
 }

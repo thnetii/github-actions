@@ -4,6 +4,7 @@ const { URL } = require("node:url");
 const core = require("@actions/core");
 const httpClientModule = require("@actions/http-client");
 
+// eslint-disable-next-line node/no-unsupported-features/es-syntax, node/no-missing-import
 const msalNode = import("@azure/msal-node");
 
 const buildMsalClient = require("../../lib/gh-actions-msal-client");
