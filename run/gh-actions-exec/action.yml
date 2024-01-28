@@ -11,6 +11,14 @@ inputs:
     default: ${{ github.workspace }}
     description: ""
     required: false
+  ignore-exitcode:
+    default: "false"
+    description: >
+      Prevents the process exit code to be set to the exit code of the executed
+      command.
+      Instead the exit code of this action will be 0, indicating success
+      regardless of the exit code of the executed command.
+    required: false
 outputs:
   command-exitcode:
     description: ""
