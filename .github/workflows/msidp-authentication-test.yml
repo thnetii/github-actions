@@ -1,0 +1,71 @@
+name: MSAL Federated Credentials
+
+on:
+  workflow_dispatch:
+    inputs:
+      tenant-id:
+        type: string
+        required: true
+      client-id:
+        type: string
+        required: true
+      resource:
+        type: string
+      resource-hostname:
+        type: string
+
+permissions:
+  id-token: write
+
+jobs:
+  msal:
+    name: Acquire Azure AD Access Token
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout ${{ github.repository }}@${{ github.ref }}
+        uses: actions/checkout@v4.1.1
+      - name: Authenticate using GitHub action
+        uses: ./run/ms-idp-workflow-run-auth
+        with:
+          tenant-id: ${{ inputs.tenant-id }}
+          client-id: ${{ inputs.client-id }}
+          resource: ${{ inputs.resource }}
+  msal-tmp-cert:
+    name: Acquire Azure AD Access Token (using temporary certificate)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout ${{ github.repository }}@${{ github.ref }}
+        uses: actions/checkout@v4.1.1
+      - name: Authenticate using GitHub action
+        uses: ./run/ms-idp-workflow-run-auth
+        with:
+          tenant-id: ${{ inputs.tenant-id }}
+          client-id: ${{ inputs.client-id }}
+          resource: ${{ inputs.resource }}
+          auth-method: 'ms-idp-temporary-certificate'
+  msal-tmp-secret:
+    name: Acquire Azure AD Access Token (using temporary secret)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout ${{ github.repository }}@${{ github.ref }}
+        uses: actions/checkout@v4.1.1
+      - name: Authenticate using GitHub action
+        uses: ./run/ms-idp-workflow-run-auth
+        with:
+          tenant-id: ${{ inputs.tenant-id }}
+          client-id: ${{ inputs.client-id }}
+          resource: ${{ inputs.resource }}
+          auth-method: 'ms-idp-temporary-secret'
+  acs-tmp-secret:
+    name: Acquire Azure AD Access Token (using ACS with temporary secret)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout ${{ github.repository }}@${{ github.ref }}
+        uses: actions/checkout@v4.1.1
+      - name: Authenticate using GitHub action
+        uses: ./run/ms-idp-workflow-run-auth
+        with:
+          tenant-id: ${{ inputs.tenant-id }}
+          client-id: ${{ inputs.client-id }}
+          resource: ${{ inputs.resource }}/${{ inputs.resource-hostname }}
+          auth-method: 'az-acs-temporary-secret'
