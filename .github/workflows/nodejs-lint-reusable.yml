@@ -5,7 +5,7 @@ on:
     inputs:
       checkout-parameters:
         type: string
-        default: '{}'
+        default: "{}"
         description: >
           A JSON object string specifying the inputs for the actions/checkout
           GitHub action.
@@ -30,12 +30,12 @@ on:
           If true, warnings and errors will be reported to GitHub actions.
       npm-install-command:
         type: string
-        default: 'clean-install'
+        default: "clean-install"
         description: |
           The npm command to run in order to install package dependencies.
       npm-install-arguments:
         type: string
-        default: '[]'
+        default: "[]"
         description: |
           Optional. Additional argument passed to the npm install command during
           package installation.
@@ -57,7 +57,7 @@ on:
           Whether the ESLint checker job should be executed.
       eslint-parameters:
         type: string
-        default: '{}'
+        default: "{}"
         description: >
           A JSON object string specifying the inputs for the
           thnetii/github-actions/run/gh-actions-eslint GitHub action.
@@ -68,7 +68,7 @@ on:
           Whether the Prettier checker job should be executed.
       prettier-parameters:
         type: string
-        default: '{}'
+        default: "{}"
         description: >
           A JSON object string specifying the inputs for the
           thnetii/github-actions/run/gh-actions-prettier GitHub action.

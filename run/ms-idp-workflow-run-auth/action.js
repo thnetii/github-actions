@@ -4,9 +4,7 @@ const httpClientModule = require("@actions/http-client");
 
 const msalNodeModule = import("@azure/msal-node");
 
-const {
-  bindCoreHelpers,
-} = require("../../lib/gh-actions-core-helpers");
+const { bindCoreHelpers } = require("../../lib/gh-actions-core-helpers");
 const buildGhaHttpClient = require("../../lib/gh-actions-http-client");
 
 const { saveStateEx: saveState } = bindCoreHelpers(ghaCore);
