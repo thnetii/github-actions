@@ -22,10 +22,8 @@ jobs:
     name: Acquire Azure AD Access Token
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout ${{ github.repository }}@${{ github.ref }}
-        uses: actions/checkout@v4.1.1
       - name: Authenticate using GitHub action
-        uses: ./run/ms-idp-workflow-run-auth
+        uses: thnetii/github-actions/run/ms-idp-workflow-run-auth@main
         with:
           tenant-id: ${{ inputs.tenant-id }}
           client-id: ${{ inputs.client-id }}
@@ -34,10 +32,8 @@ jobs:
     name: Acquire Azure AD Access Token (using temporary certificate)
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout ${{ github.repository }}@${{ github.ref }}
-        uses: actions/checkout@v4.1.1
       - name: Authenticate using GitHub action
-        uses: ./run/ms-idp-workflow-run-auth
+        uses: thnetii/github-actions/run/ms-idp-workflow-run-auth@main
         with:
           tenant-id: ${{ inputs.tenant-id }}
           client-id: ${{ inputs.client-id }}
@@ -47,10 +43,8 @@ jobs:
     name: Acquire Azure AD Access Token (using temporary secret)
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout ${{ github.repository }}@${{ github.ref }}
-        uses: actions/checkout@v4.1.1
       - name: Authenticate using GitHub action
-        uses: ./run/ms-idp-workflow-run-auth
+        uses: thnetii/github-actions/run/ms-idp-workflow-run-auth@main
         with:
           tenant-id: ${{ inputs.tenant-id }}
           client-id: ${{ inputs.client-id }}
@@ -60,10 +54,8 @@ jobs:
     name: Acquire Azure AD Access Token (using ACS with temporary secret)
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout ${{ github.repository }}@${{ github.ref }}
-        uses: actions/checkout@v4.1.1
       - name: Authenticate using GitHub action
-        uses: ./run/ms-idp-workflow-run-auth
+        uses: thnetii/github-actions/run/ms-idp-workflow-run-auth@main
         with:
           tenant-id: ${{ inputs.tenant-id }}
           client-id: ${{ inputs.client-id }}
