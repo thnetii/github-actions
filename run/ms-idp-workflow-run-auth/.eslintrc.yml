@@ -18,4 +18,3 @@ rules:
         - modules
         - dynamicImport
   node/no-missing-import: off
-  import/extensions: off

@@ -2,16 +2,18 @@
 const ghaCore = require("@actions/core");
 const httpClientModule = require("@actions/http-client");
 
-const { bindCoreHelpers } = require("../../lib/gh-actions-core-helpers");
+const {
+  bindCoreHelpers,
+} = require("../../lib/gh-actions-core-helpers/index.cjs");
 const buildGhaHttpClient = require("../../lib/gh-actions-http-client");
 
 const ghaHelpers = bindCoreHelpers(ghaCore);
 const { GhaHttpClient } = buildGhaHttpClient(ghaCore, httpClientModule);
 
-const utils = require("./utils.js");
+const utils = require("./utils");
 
-const GhaMsalAccessTokenProviderModule = require("./GhaMsalAccessTokenProvider.js");
-const GhaServicePrincipalUpdater = require("./GhaServicePrincipalUpdater.js");
+const GhaMsalAccessTokenProviderModule = require("./GhaMsalAccessTokenProvider");
+const GhaServicePrincipalUpdater = require("./GhaServicePrincipalUpdater");
 
 async function getState() {
   const { getActionInputs } = utils;

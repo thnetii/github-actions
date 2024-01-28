@@ -8,7 +8,7 @@ const msalNode = import("@azure/msal-node");
 
 const buildMsalClient = require("../../lib/gh-actions-msal-client");
 
-const utils = require("./utils.js");
+const utils = require("./utils");
 
 const { debug, info, isDebug } = core;
 

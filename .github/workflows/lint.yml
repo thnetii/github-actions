@@ -1,0 +1,61 @@
+name: Code Validation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch: {}
+
+jobs:
+  root:
+    name: Node.js (main)
+    uses: ./.github/workflows/nodejs-lint-reusable.yml
+    with:
+      checkout-parameters: >
+        {
+          "submodules": true
+        }
+      npm-install-check-enable: true
+      npm-install-arguments: >
+        [
+          "--workspaces",
+          "--include-workspace-root",
+          "--install-links"
+        ]
+      tsc-check-enable: true
+      tsc-parameters: >
+        {
+          "arguments": "--noEmit\n-p\n./jsconfig.json"
+        }
+      eslint-check-enable: true
+      prettier-check-enable: true
+
+  special-eslint:
+    name: Node.js (specialized for ${{ matrix.project }})
+    strategy:
+      matrix:
+        project:
+          - run/ms-idp-workflow-run-auth
+    uses: ./.github/workflows/nodejs-lint-reusable.yml
+    with:
+      checkout-parameters: >
+        {
+          "submodules": true
+        }
+      npm-install-arguments: >
+        [
+          "--workspace",
+          "${{ matrix.project }}",
+          "--include-workspace-root"
+        ]
+      npm-install-check-enable: false
+      tsc-check-enable: false
+      eslint-check-enable: true
+      eslint-parameters: >
+        {
+          "npm-workspace": "${{ matrix.project }}"
+        }
+      prettier-check-enable: false

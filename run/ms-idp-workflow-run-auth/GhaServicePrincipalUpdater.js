@@ -1,7 +1,7 @@
 /* eslint-disable node/no-unpublished-require */
 const core = require("@actions/core");
 const httpClientModule = require("@actions/http-client");
-const { BearerCredentialHandler } = require("@actions/http-client/lib/auth.js");
+const { BearerCredentialHandler } = require("@actions/http-client/lib/auth");
 
 const buildGhaHttpClient = require("../../lib/gh-actions-http-client");
 

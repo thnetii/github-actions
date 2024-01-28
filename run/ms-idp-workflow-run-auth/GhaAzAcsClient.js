@@ -3,7 +3,7 @@ const { HttpClientError, HttpCodes } = require("@actions/http-client");
 
 const msalNode = import("@azure/msal-node");
 
-const { onJwtToken } = require("./utils.js");
+const { onJwtToken } = require("./utils");
 
 const httpClientSym = Symbol("#httpClient");
 const clientIdSym = Symbol("#clientId");
