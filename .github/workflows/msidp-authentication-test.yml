@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Authenticate using GitHub action
-        uses: thnetii/github-actions/run/ms-idp-workflow-run-auth@main
+        uses: thnetii/ci-cd/.github/actions/ms-idp-workflow-run-auth@main
         with:
           tenant-id: ${{ inputs.tenant-id }}
           client-id: ${{ inputs.client-id }}
@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Authenticate using GitHub action
-        uses: thnetii/github-actions/run/ms-idp-workflow-run-auth@main
+        uses: thnetii/ci-cd/.github/actions/ms-idp-workflow-run-auth@main
         with:
           tenant-id: ${{ inputs.tenant-id }}
           client-id: ${{ inputs.client-id }}
@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Authenticate using GitHub action
-        uses: thnetii/github-actions/run/ms-idp-workflow-run-auth@main
+        uses: thnetii/ci-cd/.github/actions/ms-idp-workflow-run-auth@main
         with:
           tenant-id: ${{ inputs.tenant-id }}
           client-id: ${{ inputs.client-id }}
@@ -57,7 +57,7 @@ jobs:
     if: false
     steps:
       - name: Authenticate using GitHub action
-        uses: thnetii/github-actions/run/ms-idp-workflow-run-auth@main
+        uses: thnetii/ci-cd/.github/actions/ms-idp-workflow-run-auth@main
         with:
           tenant-id: ${{ inputs.tenant-id }}
           client-id: ${{ inputs.client-id }}

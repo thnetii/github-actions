@@ -49,7 +49,7 @@ on:
         default: '{"arguments": "--noEmit"}'
         description: >
           A JSON object string specifying the inputs for the
-          thnetii/github-actions/run/gh-actions-tsc GitHub action.
+          thnetii/ci-cd/.github/actions/gh-actions-tsc GitHub action.
       eslint-check-enable:
         type: boolean
         default: true
@@ -60,7 +60,7 @@ on:
         default: "{}"
         description: >
           A JSON object string specifying the inputs for the
-          thnetii/github-actions/run/gh-actions-eslint GitHub action.
+          thnetii/ci-cd/.github/actions/gh-actions-eslint GitHub action.
       prettier-check-enable:
         type: boolean
         default: true
@@ -71,7 +71,7 @@ on:
         default: "{}"
         description: >
           A JSON object string specifying the inputs for the
-          thnetii/github-actions/run/gh-actions-prettier GitHub action.
+          thnetii/ci-cd/.github/actions/gh-actions-prettier GitHub action.
 
 jobs:
   npm:
@@ -86,7 +86,7 @@ jobs:
         uses: actions/setup-node@v4.0.1
         with: ${{ fromJSON(inputs.setup-node-parameters) }}
       - name: Run npm install command
-        uses: thnetii/github-actions/run/gh-actions-npm@main
+        uses: thnetii/ci-cd/.github/actions/gh-actions-npm@main
         with:
           working-directory: ${{ inputs.npm-install-working-directory }}
           arguments: |
@@ -106,7 +106,7 @@ jobs:
         uses: actions/setup-node@v4.0.1
         with: ${{ fromJSON(inputs.setup-node-parameters) }}
       - name: Run npm install command
-        uses: thnetii/github-actions/run/gh-actions-exec@main
+        uses: thnetii/ci-cd/.github/actions/gh-actions-exec@main
         with:
           command: npm
           arguments: |
@@ -115,7 +115,7 @@ jobs:
             ') }}
           working-directory: ${{ inputs.npm-install-working-directory }}
       - name: Run TypeScript compiler command
-        uses: thnetii/github-actions/run/gh-actions-tsc@main
+        uses: thnetii/ci-cd/.github/actions/gh-actions-tsc@main
         with: ${{ fromJSON(inputs.tsc-parameters) }}
 
   eslint:
@@ -130,7 +130,7 @@ jobs:
         uses: actions/setup-node@v4.0.1
         with: ${{ fromJSON(inputs.setup-node-parameters) }}
       - name: Run npm install command
-        uses: thnetii/github-actions/run/gh-actions-exec@main
+        uses: thnetii/ci-cd/.github/actions/gh-actions-exec@main
         with:
           command: npm
           arguments: |
@@ -139,7 +139,7 @@ jobs:
             ') }}
           working-directory: ${{ inputs.npm-install-working-directory }}
       - name: Run ESLint command
-        uses: thnetii/github-actions/run/gh-actions-eslint@main
+        uses: thnetii/ci-cd/.github/actions/gh-actions-eslint@main
         with: ${{ fromJSON(inputs.eslint-parameters) }}
 
   prettier:
@@ -154,7 +154,7 @@ jobs:
         uses: actions/setup-node@v4.0.1
         with: ${{ fromJSON(inputs.setup-node-parameters) }}
       - name: Run npm install command
-        uses: thnetii/github-actions/run/gh-actions-exec@main
+        uses: thnetii/ci-cd/.github/actions/gh-actions-exec@main
         with:
           command: npm
           arguments: |
@@ -163,5 +163,5 @@ jobs:
             ') }}
           working-directory: ${{ inputs.npm-install-working-directory }}
       - name: Run Prettier check command
-        uses: thnetii/github-actions/run/gh-actions-prettier@main
+        uses: thnetii/ci-cd/.github/actions/gh-actions-prettier@main
         with: ${{ fromJSON(inputs.prettier-parameters) }}

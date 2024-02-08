@@ -8,7 +8,7 @@ updates:
     reviewers:
       - thnetii/organization
   - package-ecosystem: npm
-    directory: /
+    directory: /.github
     open-pull-requests-limit: 50
     schedule:
       interval: daily

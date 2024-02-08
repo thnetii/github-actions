@@ -1,0 +1,29 @@
+{
+  "name": "@thnetii/gh-actions-create-rebase-pr-branch",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thnetii/ci-cd.git",
+    "directory": ".github/actions/create-rebase-pr-branch"
+  },
+  "author": "TH-NETII Rasch Solutions <fredrik.rasch@gmail.com> (https://thnetii.td.org.uit.no)",
+  "maintainers": [
+    "Fredrik Høisæther Rasch <fredrik.rasch@gmail.com>"
+  ],
+  "bugs": {
+    "url": "https://github.com/thnetii/ci-cd/issues"
+  },
+  "homepage": "https://github.com/thnetii/ci-cd#readme",
+  "license": "MIT",
+  "files": [
+    "action.yml"
+  ],
+  "type": "commonjs",
+  "main": "action.js",
+  "devDependencies": {
+    "github-script": "github:actions/github-script#v7.0.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
