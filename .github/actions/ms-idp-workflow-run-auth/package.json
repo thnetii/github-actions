@@ -36,7 +36,7 @@
     "@actions/core": "^1.11.1",
     "@actions/exec": "^1.1.1",
     "@actions/http-client": "^2.2.3",
-    "@azure/msal-node": "^2.13.1"
+    "@azure/msal-node": "^3.2.2"
   },
   "devDependencies": {
     "@microsoft/microsoft-graph-types": "^2"
